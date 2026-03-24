@@ -1,0 +1,34 @@
+-- Create schemas for raw and analytics layers.
+CREATE OR REPLACE DATABASE ehr_demo;
+CREATE OR REPLACE SCHEMA ehr_demo.raw;
+CREATE OR REPLACE SCHEMA ehr_demo.analytics;
+
+-- Use the raw schema.
+USE DATABASE ehr_demo;
+USE SCHEMA raw;
+
+-- Example raw table definitions.
+CREATE OR REPLACE TABLE patients_raw (
+    Id STRING,
+    BIRTHDATE DATE,
+    DEATHDATE DATE,
+    GENDER STRING,
+    RACE STRING,
+    ETHNICITY STRING,
+    CITY STRING,
+    STATE STRING,
+    COUNTY STRING,
+    ZIP STRING
+);
+
+CREATE OR REPLACE TABLE encounters_raw (
+    Id STRING,
+    PATIENT STRING,
+    ORGANIZATION STRING,
+    ENCOUNTERCLASS STRING,
+    START TIMESTAMP,
+    STOP TIMESTAMP,
+    PAYER_COVERAGE FLOAT,
+    REASONCODE STRING,
+    REASONDESCRIPTION STRING
+);
